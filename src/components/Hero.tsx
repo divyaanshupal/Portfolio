@@ -148,7 +148,7 @@ const Hero: React.FC<HeroProps> = ({ scrollY }) => {
               <Github size={20} />
             </motion.a>
             <motion.a 
-              href="https://linkedin.com/in/divyaanshupal" 
+              href="https://linkedin.com/in/divyaanshu" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="p-3 rounded-full glass hover-social" 

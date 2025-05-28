@@ -135,7 +135,7 @@ const Contact: React.FC = () => {
                       <Github size={18} />
                     </a>
                     <a 
-                      href="https://linkedin.com/in/divyaanshupal" 
+                      href="https://www.linkedin.com/in/divyaanshu/" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="p-3 rounded-full bg-slate-800 text-white hover-social"
@@ -150,7 +150,25 @@ const Contact: React.FC = () => {
               <div className="bg-gradient-to-r from-indigo-600 to-blue-700 rounded-xl shadow-lg p-6 text-white hover-card">
                 <h3 className="text-xl font-semibold mb-4">Open to Opportunities</h3>
                 <p className="mb-4">I'm currently looking for internship and collaboration opportunities in software development, particularly in Flutter, React, and full-stack development.</p>
-                <p>Feel free to reach out if you have an interesting project or opportunity!</p>
+                <p className="mb-4">Check out my recent projects:</p>
+                <div className="space-y-2">
+                  <a 
+                    href="https://github.com/divyaanshupal/RoutineS-Firebase" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block text-white hover:text-indigo-200 transition-colors"
+                  >
+                    • RoutineS - Firebase Project
+                  </a>
+                  <a 
+                    href="https://github.com/divyaanshupal/Hangman-flutter-apk" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block text-white hover:text-indigo-200 transition-colors"
+                  >
+                    • Hangman Flutter App
+                  </a>
+                </div>
               </div>
             </div>
             

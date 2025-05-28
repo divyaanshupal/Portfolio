@@ -18,7 +18,7 @@ const Projects: React.FC = () => {
       title: 'RoutineS: Real-Time Task Manager',
       description: 'A task management app with secure authentication, real-time syncing, and image uploads.',
       stack: ['Flutter', 'Dart', 'Firebase (Firestore)', 'Supabase'],
-      githubLink: 'https://github.com/divyaanshupal',
+      githubLink: 'https://github.com/divyaanshupal/RoutineS-Firebase',
       details: [
         'Built a task management app with secure authentication, enabling 500+ users to sign up, log in, and create tasks.',
         'Implemented real-time sync for 10,000+ tasks using Firebase Firestore.',
@@ -30,7 +30,7 @@ const Projects: React.FC = () => {
       title: 'Hangman',
       description: 'An interactive Hangman game with multiple difficulty levels and a smart hint system.',
       stack: ['Flutter', 'Dart', 'Firebase'],
-      githubLink: 'https://github.com/divyaanshupal',
+      githubLink: 'https://github.com/divyaanshupal/Hangman-flutter-apk',
       details: [
         'Developed an interactive Hangman game with a database of 130+ words across 3 difficulty levels (Easy, Medium, Hard).',
         'Implemented an adaptive hint system offering 40+ contextual suggestions, enhancing user engagement and learning.',
