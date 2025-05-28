@@ -28,12 +28,12 @@ const Education: React.FC = () => {
     {
       degree: "B.Tech in Computer Science and Engineering",
       institution: "Indian Institute of Information Technology Bhagalpur",
-      duration: "2021 - 2025",
+      duration: "2023 - 2027",
       details: "Currently pursuing my undergraduate degree with a focus on software development and problem-solving."
     },
     {
       degree: "Higher Secondary Education",
-      institution: "Delhi Public School, Bokaro",
+      institution: "KR Education Center, Kanpur",
       duration: "2019 - 2021",
       details: "Completed with distinction, focusing on Physics, Chemistry, and Mathematics."
     }
