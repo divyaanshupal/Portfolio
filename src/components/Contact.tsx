@@ -152,6 +152,15 @@ const Contact: React.FC = () => {
                 <p className="mb-4">I'm currently looking for internship and collaboration opportunities in software development, particularly in Flutter, React, and full-stack development.</p>
                 <p className="mb-4">Check out my recent projects:</p>
                 <div className="space-y-2">
+
+                <a 
+                    href="https://github.com/divyaanshupal/RoutineS-Firebase" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block text-white hover:text-indigo-200 transition-colors"
+                  >
+                    • Jeb-Kharch - Expense Tracker App
+                  </a>
                   <a 
                     href="https://github.com/divyaanshupal/RoutineS-Firebase" 
                     target="_blank" 

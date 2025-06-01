@@ -15,10 +15,8 @@ const Hero: React.FC<HeroProps> = ({ scrollY }) => {
   
   const titles = [
     "Absolute Learner",
-    "Flutter Developer",
+    "Flutter/Mobile Developer",
     "Competitive Programmer",
-    "Problem Solver",
-    "Open Source Contributor"
   ];
 
   useEffect(() => {
