@@ -15,6 +15,18 @@ const Projects: React.FC = () => {
 
   const projects: Project[] = [
     {
+      title:'Jeb-Kharch:A Expense Tracker App',
+      description:'A expense tracker & maanagerment app with secured authentication & catchy UI',
+      stack:['Flutter','Firebase Authentication','SQFLITE'],
+      githubLink:'https://github.com/divyaanshupal/Expense-Tracker-Assignment',
+      details:[
+        'Secure authentication with email/password and Google Sign-In, including persistent login sessions for seamless user experience.',
+        'Features to add and manage transactions, categorize expenses, choose payment methods, and add detailed descriptions to each transaction.',
+        'Users can view a comprehensive overview of their total income and expenses for better financial tracking.',
+        'Users can access full transaction history with swipe-to-delete functionality for quick and intuitive record management.',
+      ]
+    },
+    {
       title: 'RoutineS: Real-Time Task Manager',
       description: 'A task management app with secure authentication, real-time syncing, and image uploads.',
       stack: ['Flutter', 'Dart', 'Firebase (Firestore)', 'Supabase'],
