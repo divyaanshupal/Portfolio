@@ -1,5 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import PixelCard from './PixelCard';
+
+const EDU_COLORS = [
+  {
+    card: 'Light:bg-indigo-50',
+    degree: 'text-yellow-600 dark:text-yellow-300',
+    institution: 'text-yellow-700 dark:text-yellow-200',
+    duration: 'text-yellow-500 dark:text-yellow-300',
+    details: 'text-yellow-800 dark:text-yellow-100',
+  },
+  {
+    card: 'Light:bg-indigo-50',
+    degree: 'text-yellow-600 dark:text-yellow-300',
+    institution: 'text-yellow-700 dark:text-yellow-200',
+    duration: 'text-yellow-500 dark:text-yellow-300',
+    details: 'text-yellow-800 dark:text-yellow-100',
+  },
+];
 
 const Education: React.FC = () => {
   const containerVariants = {
@@ -67,51 +85,53 @@ const Education: React.FC = () => {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {educationData.map((edu, index) => (
-              <motion.div
-                key={index}
-                className="bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 dark:border-slate-700/50 rounded-xl shadow-lg p-6 hover-card shine"
-                variants={itemVariants}
-                whileHover={{ scale: 1.02 }}
-              >
-                <motion.h3 
-                  className="text-xl font-semibold text-indigo-600 dark:text-indigo-400 mb-2"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
+            {educationData.map((edu, index) => {
+              const color = EDU_COLORS[index % EDU_COLORS.length];
+              return (
+                <PixelCard
+                  key={index}
+                  variant="pink"
+                  className={`rounded-xl shadow-lg p-6 ${color.card}`}
                 >
-                  {edu.degree}
-                </motion.h3>
-                <motion.p 
-                  className="text-lg font-medium mb-2"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 + 0.1 }}
-                >
-                  {edu.institution}
-                </motion.p>
-                <motion.p 
-                  className="text-slate-600 dark:text-slate-400 mb-3"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 + 0.2 }}
-                >
-                  {edu.duration}
-                </motion.p>
-                <motion.p 
-                  className="text-slate-700 dark:text-slate-300"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 + 0.3 }}
-                >
-                  {edu.details}
-                </motion.p>
-              </motion.div>
-            ))}
+                  <motion.h3 
+                    className={`text-xl font-extrabold mb-2 ${color.degree}`}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
+                  >
+                    {edu.degree}
+                  </motion.h3>
+                  <motion.p 
+                    className={`text-lg font-medium mb-2 ${color.institution}`}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 + 0.1 }}
+                  >
+                    {edu.institution}
+                  </motion.p>
+                  <motion.p 
+                    className={`mb-3 ${color.duration}`}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 + 0.2 }}
+                  >
+                    {edu.duration}
+                  </motion.p>
+                  <motion.p 
+                    className={`${color.details}`}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 + 0.3 }}
+                  >
+                    {edu.details}
+                  </motion.p>
+                </PixelCard>
+              );
+            })}
           </motion.div>
         </div>
       </div>

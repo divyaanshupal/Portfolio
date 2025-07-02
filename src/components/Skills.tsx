@@ -3,6 +3,41 @@ import { motion } from 'framer-motion';
 import PixelCard from './PixelCard';
 import { Code, Globe, Smartphone, Settings } from 'lucide-react';
 
+const SKILL_COLORS = [
+  {
+    iconBg: 'bg-blue-100 dark:bg-blue-900',
+    iconText: 'text-blue-500 dark:text-blue-300',
+    title: 'text-blue-600 dark:text-blue-300',
+    badgeBg: 'bg-blue-50 dark:bg-blue-800',
+    badgeText: 'text-blue-700 dark:text-blue-200',
+    badgeBorder: 'border-blue-100 dark:border-blue-700',
+  },
+  {
+    iconBg: 'bg-pink-100 dark:bg-pink-900',
+    iconText: 'text-pink-500 dark:text-pink-300',
+    title: 'text-pink-600 dark:text-pink-300',
+    badgeBg: 'bg-pink-50 dark:bg-pink-800',
+    badgeText: 'text-pink-700 dark:text-pink-200',
+    badgeBorder: 'border-pink-100 dark:border-pink-700',
+  },
+  {
+    iconBg: 'bg-yellow-100 dark:bg-yellow-900',
+    iconText: 'text-yellow-500 dark:text-yellow-300',
+    title: 'text-yellow-600 dark:text-yellow-300',
+    badgeBg: 'bg-yellow-50 dark:bg-yellow-800',
+    badgeText: 'text-yellow-700 dark:text-yellow-200',
+    badgeBorder: 'border-yellow-100 dark:border-yellow-700',
+  },
+  {
+    iconBg: 'bg-green-100 dark:bg-green-900',
+    iconText: 'text-green-500 dark:text-green-300',
+    title: 'text-green-600 dark:text-green-300',
+    badgeBg: 'bg-green-50 dark:bg-green-800',
+    badgeText: 'text-green-700 dark:text-green-200',
+    badgeBorder: 'border-green-100 dark:border-green-700',
+  },
+];
+
 const Skills: React.FC = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -29,22 +64,22 @@ const Skills: React.FC = () => {
   const skillCategories = [
     {
       title: "Programming Languages",
-      icon: <Code size={28} className="text-indigo-500 dark:text-indigo-300" />,
+      icon: <Code size={28} />,
       skills: ["Python", "JavaScript", "TypeScript", "C++", "Java", "Dart"]
     },
     {
       title: "Web Development",
-      icon: <Globe size={28} className="text-indigo-500 dark:text-indigo-300" />,
+      icon: <Globe size={28} />,
       skills: ["React", "Next.js", "HTML5", "CSS3", "Tailwind CSS", "Node.js"]
     },
     {
       title: "Mobile Development",
-      icon: <Smartphone size={28} className="text-indigo-500 dark:text-indigo-300" />,
+      icon: <Smartphone size={28} />,
       skills: ["Flutter", "React Native", "Android Studio", "Firebase"]
     },
     {
       title: "Tools & Technologies",
-      icon: <Settings size={28} className="text-indigo-500 dark:text-indigo-300" />,
+      icon: <Settings size={28} />,
       skills: ["Git", "GitHub", "VS Code", "Docker", "PostgreSQL", "MongoDB"]
     }
   ];
@@ -77,32 +112,35 @@ const Skills: React.FC = () => {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {skillCategories.map((category, index) => (
-              <PixelCard
-                key={index}
-                variant="pink"
-                className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 transition-all hover:shadow-xl hover:-translate-y-1"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900">
-                    {category.icon}
-                  </span>
-                  <h3 className="text-xl font-extrabold text-indigo-600 dark:text-indigo-300">
-                    {category.title}
-                  </h3>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, skillIndex) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1 rounded-full text-sm font-semibold bg-indigo-50 dark:bg-indigo-800 text-indigo-700 dark:text-indigo-200 border border-indigo-100 dark:border-indigo-700"
-                    >
-                      {skill}
+            {skillCategories.map((category, index) => {
+              const color = SKILL_COLORS[index % SKILL_COLORS.length];
+              return (
+                <PixelCard
+                  key={index}
+                  variant="pink"
+                  className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 transition-all hover:shadow-xl hover:-translate-y-1"
+                >
+                  <div className={`flex items-center gap-3 mb-4`}>
+                    <span className={`inline-flex items-center justify-center w-10 h-10 rounded-full ${color.iconBg}`}>
+                      {React.cloneElement(category.icon, { className: `${color.iconText}` })}
                     </span>
-                  ))}
-                </div>
-              </PixelCard>
-            ))}
+                    <h3 className={`text-xl font-extrabold ${color.title}`}>
+                      {category.title}
+                    </h3>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill, skillIndex) => (
+                      <span
+                        key={skill}
+                        className={`px-3 py-1 rounded-full text-sm font-semibold ${color.badgeBg} ${color.badgeText} ${color.badgeBorder} border`}
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </PixelCard>
+              );
+            })}
           </motion.div>
           
           <div className="mt-16 bg-gradient-to-r from-indigo-500 to-blue-600 rounded-xl shadow-lg p-8 text-white">
