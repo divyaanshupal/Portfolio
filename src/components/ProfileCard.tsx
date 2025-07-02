@@ -268,7 +268,13 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
         <div className="pc-inside">
           <div className="pc-shine" />
           <div className="pc-glare" />
-          <div className="pc-content pc-avatar-content">
+          <div className="pc-content">
+            <div className="pc-details" style={{ position: 'relative', top: '2.5em', zIndex: 5 }}>
+              <h3>{name}</h3>
+              <p>{title}</p>
+            </div>
+          </div>
+          <div className="pc-content pc-avatar-content" style={{ marginTop: '7em', zIndex: 4 }}>
             <img
               className="avatar"
               src={avatarUrl}
@@ -310,12 +316,6 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                 </button>
               </div>
             )}
-          </div>
-          <div className="pc-content">
-            <div className="pc-details">
-              <h3>{name}</h3>
-              <p>{title}</p>
-            </div>
           </div>
         </div>
       </section>

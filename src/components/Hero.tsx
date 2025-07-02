@@ -165,7 +165,7 @@ const Hero: React.FC<HeroProps> = ({ scrollY }) => {
               handle="divyaanshupal"
               status="Online"
               contactText="Contact Me"
-              avatarUrl="https://ui-avatars.com/api/?name=Divyanshu+Pal&background=6d28d9&color=fff&size=256"
+              avatarUrl="/pf1.jpg"
               showUserInfo={true}
               enableTilt={true}
               onContactClick={() => window.location.href = '#contact'}
