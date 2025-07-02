@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Github, ExternalLink } from 'lucide-react';
+import PixelCard from './PixelCard';
 
 interface Project {
   title: string;
@@ -99,41 +100,47 @@ const Projects: React.FC = () => {
           
           <div className="space-y-12">
             {projects.map((project, index) => (
-              <div 
+              <PixelCard
                 key={index}
+                variant="pink"
                 className={`bg-white dark:bg-slate-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 ${
                   activeProject === index ? 'shadow-2xl' : 'hover:shadow-xl'
                 }`}
               >
                 {/* Project Header */}
-                <div 
-                  className={`p-6 cursor-pointer ${
+                <div
+                  className={`p-6 cursor-pointer relative z-10 ${
                     activeProject === index ? 'bg-indigo-50 dark:bg-indigo-900/30' : ''
                   }`}
                   onClick={() => toggleProject(index)}
                 >
                   <div className="flex items-start justify-between">
-                    <h3 className="text-xl font-semibold text-indigo-600 dark:text-indigo-400 mb-2">
-                      {project.title}
-                    </h3>
+                    <div className="flex items-center gap-3">
+                      <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-300 shadow-lg">
+                        <Github size={24} />
+                      </span>
+                      <h3 className="text-xl font-extrabold text-indigo-600 dark:text-indigo-300 mb-2">
+                        {project.title}
+                      </h3>
+                    </div>
                     <a 
                       href={project.githubLink} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-slate-700 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors"
+                      className="text-slate-400 hover:text-indigo-600 dark:text-slate-500 dark:hover:text-indigo-300 transition-colors"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <Github size={20} />
+                      <ExternalLink size={22} />
                     </a>
                   </div>
-                  <p className="text-slate-700 dark:text-slate-300 mb-4">
+                  <p className="text-base font-medium text-slate-700 dark:text-slate-200 mb-4">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {project.stack.map((tech, techIndex) => (
                       <span 
                         key={techIndex}
-                        className="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded-full text-slate-800 dark:text-slate-200 text-sm"
+                        className="px-3 py-1 rounded-full text-sm font-semibold bg-indigo-50 dark:bg-indigo-800 text-indigo-700 dark:text-indigo-200 border border-indigo-100 dark:border-indigo-700"
                       >
                         {tech}
                       </span>
@@ -143,8 +150,8 @@ const Projects: React.FC = () => {
                 
                 {/* Project Details */}
                 {activeProject === index && (
-                  <div className="p-6 pt-0 bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700">
-                    <ul className="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300 mb-4">
+                  <div className="p-6 pt-0 bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700 relative z-10">
+                    <ul className="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-200 mb-4">
                       {project.details.map((detail, detailIndex) => (
                         <li key={detailIndex}>{detail}</li>
                       ))}
@@ -154,14 +161,14 @@ const Projects: React.FC = () => {
                         href={project.githubLink} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300 font-medium"
+                        className="inline-flex items-center text-indigo-600 hover:text-indigo-800 dark:text-indigo-300 dark:hover:text-indigo-400 font-bold text-lg transition-colors"
                       >
-                        View Project <ExternalLink size={16} className="ml-1" />
+                        View Project <ExternalLink size={18} className="ml-1" />
                       </a>
                     </div>
                   </div>
                 )}
-              </div>
+              </PixelCard>
             ))}
           </div>
         </div>

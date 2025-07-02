@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import PixelCard from './PixelCard';
+import { Code, Globe, Smartphone, Settings } from 'lucide-react';
 
 const Skills: React.FC = () => {
   const containerVariants = {
@@ -27,18 +29,22 @@ const Skills: React.FC = () => {
   const skillCategories = [
     {
       title: "Programming Languages",
+      icon: <Code size={28} className="text-indigo-500 dark:text-indigo-300" />,
       skills: ["Python", "JavaScript", "TypeScript", "C++", "Java", "Dart"]
     },
     {
       title: "Web Development",
+      icon: <Globe size={28} className="text-indigo-500 dark:text-indigo-300" />,
       skills: ["React", "Next.js", "HTML5", "CSS3", "Tailwind CSS", "Node.js"]
     },
     {
       title: "Mobile Development",
+      icon: <Smartphone size={28} className="text-indigo-500 dark:text-indigo-300" />,
       skills: ["Flutter", "React Native", "Android Studio", "Firebase"]
     },
     {
       title: "Tools & Technologies",
+      icon: <Settings size={28} className="text-indigo-500 dark:text-indigo-300" />,
       skills: ["Git", "GitHub", "VS Code", "Docker", "PostgreSQL", "MongoDB"]
     }
   ];
@@ -72,36 +78,30 @@ const Skills: React.FC = () => {
             viewport={{ once: true }}
           >
             {skillCategories.map((category, index) => (
-              <motion.div
+              <PixelCard
                 key={index}
-                className="bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 dark:border-slate-700/50 rounded-xl shadow-lg p-6 hover-card shine"
-                variants={itemVariants}
-                whileHover={{ scale: 1.02 }}
+                variant="pink"
+                className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 transition-all hover:shadow-xl hover:-translate-y-1"
               >
-                <motion.h3 
-                  className="text-xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                >
-                  {category.title}
-                </motion.h3>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900">
+                    {category.icon}
+                  </span>
+                  <h3 className="text-xl font-extrabold text-indigo-600 dark:text-indigo-300">
+                    {category.title}
+                  </h3>
+                </div>
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill, skillIndex) => (
-                    <motion.span
+                    <span
                       key={skill}
-                      className="px-3 py-1 bg-indigo-100/50 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 rounded-full text-sm hover-tag"
-                      whileHover={{ scale: 1.1 }}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: (index * 0.1) + (skillIndex * 0.05) }}
+                      className="px-3 py-1 rounded-full text-sm font-semibold bg-indigo-50 dark:bg-indigo-800 text-indigo-700 dark:text-indigo-200 border border-indigo-100 dark:border-indigo-700"
                     >
                       {skill}
-                    </motion.span>
+                    </span>
                   ))}
                 </div>
-              </motion.div>
+              </PixelCard>
             ))}
           </motion.div>
           

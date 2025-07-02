@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Trophy, Code } from 'lucide-react';
+import PixelCard from './PixelCard';
 
 interface Achievement {
   title: string;
@@ -66,28 +67,30 @@ const Achievements: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {achievements.map((achievement, index) => (
-              <div 
-                key={index}
-                className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 transition-all hover:shadow-xl hover:-translate-y-1"
-              >
-                <div className="flex items-start">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-400 mr-4 flex-shrink-0">
+              <PixelCard key={index} variant="pink" className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 transition-all hover:shadow-xl hover:-translate-y-1">
+                <div className="flex items-start relative z-10">
+                  <div className={
+                    `flex items-center justify-center w-12 h-12 rounded-full mr-4 flex-shrink-0 ` +
+                    (achievement.icon === 'trophy'
+                      ? 'bg-gradient-to-tr from-yellow-400 via-pink-400 to-red-500 text-white shadow-lg'
+                      : 'bg-gradient-to-tr from-blue-400 via-cyan-400 to-green-400 text-white shadow-lg')
+                  }>
                     {achievement.icon === 'trophy' ? (
-                      <Trophy size={20} />
+                      <Trophy size={24} />
                     ) : (
-                      <Code size={20} />
+                      <Code size={24} />
                     )}
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mb-2">
+                    <h3 className="text-lg font-extrabold mb-2 bg-gradient-to-r from-pink-500 via-yellow-500 to-red-500 bg-clip-text text-transparent dark:from-pink-400 dark:via-yellow-400 dark:to-red-400">
                       {achievement.title}
                     </h3>
-                    <p className="text-slate-700 dark:text-slate-300">
+                    <p className="text-base font-medium text-indigo-600 dark:text-indigo-300">
                       {achievement.description}
                     </p>
                   </div>
                 </div>
-              </div>
+              </PixelCard>
             ))}
           </div>
           
