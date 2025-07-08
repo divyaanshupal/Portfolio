@@ -63,9 +63,11 @@ const Experience: React.FC = () => {
                     </div>
                     <p className="text-lg font-medium mb-3 text-blue-700 dark:text-blue-200">Medhwan | Remote</p>
                     <ul className="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-200">
-                      <li>Developing a new EdTech app from scratch, handling UI development and logic implementation using Flutter.</li>
-                      <li>Built 20+ UI screens with responsive layouts and optimized performance across devices.</li>
-                      <li>Implemented Riverpod state management, boosting performance by 20%, and collaborated on feature integration, with plans for backend development (API integration, database management).</li>
+                      <li>Developed a EdTech app from scratch, handling UI development and logic implementation using Flutter.</li>
+                      <li>Integrated Node.js + MongoDB backend with REST APIs; improved performance by 30% via Riverpod.</li>
+                      <li>Built pagination to efficiently render 10,000+ questions across devices.</li>
+                      <li>Used Hive and SharedPreferences to speed up data access by 25%.</li>
+                      <li>Developed reusable User and Course models; reduced API calls by 40%.</li>
                     </ul>
                     <div className="mt-4 flex flex-wrap gap-2">
                       <span className="px-3 py-1 bg-blue-50 dark:bg-blue-800 text-blue-700 dark:text-blue-200 border border-blue-100 dark:border-blue-700 rounded-full text-sm font-semibold">Flutter</span>
