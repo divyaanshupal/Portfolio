@@ -79,6 +79,7 @@ const Experience: React.FC = () => {
                   </span>
                 </div>
                 <div className="flex-1 sm:pl-8">
+                  <a href="https://www.linkedin.com/posts/divyaanshu_letterofaccomplishment-activity-7346032388231110656-pI3w?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbWEZ0BL0zA_E3jbmOrIwgFJjFYr4EtDDM" target="_blank" rel="noopener noreferrer" style={{ display: 'block', textDecoration: 'none' }}>
                   <PixelCard variant="pink" className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 transition-all hover:shadow-xl">
                     <div className="flex items-center mb-2">
                       <h3 className="text-xl font-extrabold text-blue-600 dark:text-blue-300">
@@ -103,6 +104,7 @@ const Experience: React.FC = () => {
                       <span className="px-3 py-1 bg-blue-50 dark:bg-blue-800 text-blue-700 dark:text-blue-200 border border-blue-100 dark:border-blue-700 rounded-full text-sm font-semibold">UI Design</span>
                     </div>
                   </PixelCard>
+                  </a>
                 </div>
               </div>
             </div>
