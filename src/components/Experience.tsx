@@ -58,6 +58,33 @@ const Experience: React.FC = () => {
                         Flutter Developer Intern
                       </h3>
                       <span className="ml-auto text-sm bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full">
+                        July 2025 - Present
+                      </span>
+                    </div>
+                    <p className="text-lg font-medium mb-3 text-blue-700 dark:text-blue-200">Kyrotics | Remote</p>
+                    <ul className="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-200">
+                      <li>Working on building an encrypted file sharing mobile app.</li>
+                    </ul>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-blue-50 dark:bg-blue-800 text-blue-700 dark:text-blue-200 border border-blue-100 dark:border-blue-700 rounded-full text-sm font-semibold">Flutter</span>
+                      <span className="px-3 py-1 bg-blue-50 dark:bg-blue-800 text-blue-700 dark:text-blue-200 border border-blue-100 dark:border-blue-700 rounded-full text-sm font-semibold">Dart</span>
+                    </div>
+                  </PixelCard>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row mt-12">
+                <div className="sm:w-32 mb-4 sm:mb-0 flex items-center justify-center">
+                  <span className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-500 dark:text-blue-300 border-4 border-white dark:border-slate-800 shadow-lg">
+                    <Briefcase size={24} />
+                  </span>
+                </div>
+                <div className="flex-1 sm:pl-8">
+                  <PixelCard variant="pink" className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 transition-all hover:shadow-xl">
+                    <div className="flex items-center mb-2">
+                      <h3 className="text-xl font-extrabold text-blue-600 dark:text-blue-300">
+                        Flutter Developer Intern
+                      </h3>
+                      <span className="ml-auto text-sm bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full">
                         Mar 2025 - June 2025
                       </span>
                     </div>

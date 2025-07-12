@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import PixelCard from './PixelCard';
 import { Mail, Phone, Github } from 'lucide-react';
 
+//test test test
+
 const ABOUT_COLORS = [
   {
     card: 'bg-blue-50 dark:bg-blue-900',
@@ -122,6 +124,7 @@ const About: React.FC = () => {
               </motion.p>
             </div>
           </PixelCard>
+          
           {/* Contact & Interests Cards */}
           <motion.div 
             className="grid grid-cols-1 sm:grid-cols-2 gap-8"
