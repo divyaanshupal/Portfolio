@@ -24,7 +24,7 @@ const Achievements: React.FC = () => {
     },
     {
       title: 'Competitive Programming',
-      description: 'Solved 300+ problems across platforms (150+ on LeetCode); 2-star on CodeChef (rating 1469) with global rank 682.',
+      description: 'Solved 300+ problems across platforms (150+ on LeetCode); 3-star on CodeChef (rating 1600) with global rank 682.',
       icon: 'code'
     }
   ];
