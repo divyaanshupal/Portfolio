@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import PixelCard from './PixelCard';
-import { Code, Globe, Smartphone, Settings } from 'lucide-react';
+import { Code, Globe, Smartphone, Settings, Users, BookOpen } from 'lucide-react';
 
 const SKILL_COLORS = [
   {
     iconBg: 'bg-blue-100 dark:bg-blue-900',
     iconText: 'text-blue-500 dark:text-blue-300',
-    title: 'text-blue-600 dark:text-blue-300',
+    titleGradient: 'from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400',
     badgeBg: 'bg-blue-50 dark:bg-blue-800',
     badgeText: 'text-blue-700 dark:text-blue-200',
     badgeBorder: 'border-blue-100 dark:border-blue-700',
@@ -15,7 +15,7 @@ const SKILL_COLORS = [
   {
     iconBg: 'bg-pink-100 dark:bg-pink-900',
     iconText: 'text-pink-500 dark:text-pink-300',
-    title: 'text-pink-600 dark:text-pink-300',
+    titleGradient: 'from-pink-600 to-rose-600 dark:from-pink-400 dark:to-rose-400',
     badgeBg: 'bg-pink-50 dark:bg-pink-800',
     badgeText: 'text-pink-700 dark:text-pink-200',
     badgeBorder: 'border-pink-100 dark:border-pink-700',
@@ -23,7 +23,7 @@ const SKILL_COLORS = [
   {
     iconBg: 'bg-yellow-100 dark:bg-yellow-900',
     iconText: 'text-yellow-500 dark:text-yellow-300',
-    title: 'text-yellow-600 dark:text-yellow-300',
+    titleGradient: 'from-yellow-600 to-orange-600 dark:from-yellow-400 dark:to-orange-400',
     badgeBg: 'bg-yellow-50 dark:bg-yellow-800',
     badgeText: 'text-yellow-700 dark:text-yellow-200',
     badgeBorder: 'border-yellow-100 dark:border-yellow-700',
@@ -31,10 +31,26 @@ const SKILL_COLORS = [
   {
     iconBg: 'bg-green-100 dark:bg-green-900',
     iconText: 'text-green-500 dark:text-green-300',
-    title: 'text-green-600 dark:text-green-300',
+    titleGradient: 'from-green-600 to-emerald-600 dark:from-green-400 dark:to-emerald-400',
     badgeBg: 'bg-green-50 dark:bg-green-800',
     badgeText: 'text-green-700 dark:text-green-200',
     badgeBorder: 'border-green-100 dark:border-green-700',
+  },
+  {
+    iconBg: 'bg-indigo-100 dark:bg-indigo-900',
+    iconText: 'text-indigo-500 dark:text-indigo-300',
+    titleGradient: 'from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400',
+    badgeBg: 'bg-indigo-50 dark:bg-indigo-800',
+    badgeText: 'text-indigo-700 dark:text-indigo-200',
+    badgeBorder: 'border-indigo-100 dark:border-indigo-700',
+  },
+  {
+    iconBg: 'bg-cyan-100 dark:bg-cyan-900',
+    iconText: 'text-cyan-500 dark:text-cyan-300',
+    titleGradient: 'from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400',
+    badgeBg: 'bg-cyan-50 dark:bg-cyan-800',
+    badgeText: 'text-cyan-700 dark:text-cyan-200',
+    badgeBorder: 'border-cyan-100 dark:border-cyan-700',
   },
 ];
 
@@ -63,24 +79,34 @@ const Skills: React.FC = () => {
 
   const skillCategories = [
     {
-      title: "Programming Languages",
+      title: "Languages",
       icon: <Code size={28} />,
-      skills: ["Python", "JavaScript", "TypeScript", "C++", "Java", "Dart"]
+      skills: ["C++", "JS", "Python", "Dart", "SQL"]
     },
     {
-      title: "Web Development",
+      title: "Frameworks",
       icon: <Globe size={28} />,
-      skills: ["React", "Next.js", "HTML5", "CSS3", "Tailwind CSS", "Node.js"]
+      skills: ["Flutter", "Node.js", "Express.js", "Firebase", "Supabase", "RESTful APIs"]
     },
     {
-      title: "Mobile Development",
-      icon: <Smartphone size={28} />,
-      skills: ["Flutter", "React Native", "Android Studio", "Firebase"]
-    },
-    {
-      title: "Tools & Technologies",
+      title: "Tools",
       icon: <Settings size={28} />,
-      skills: ["Git", "GitHub", "VS Code", "Docker", "PostgreSQL", "MongoDB"]
+      skills: ["Git", "GitHub", "Figma", "Postman", "Android Studio", "Visual Studio Code"]
+    },
+    {
+      title: "CS Fundamentals",
+      icon: <BookOpen size={28} />,
+      skills: ["Data Structures", "Algorithms", "Object-Oriented Programming (OOP)", "DBMS", "OS", "REST API"]
+    },
+    {
+      title: "Soft Skills",
+      icon: <Users size={28} />,
+      skills: ["Communication", "Analytical Thinking", "Problem Solving", "Team Collaboration"]
+    },
+    {
+      title: "Additional Skills",
+      icon: <Settings size={28} />,
+      skills: ["Software Development", "Mobile App Development", "Full-Stack Development", "API Integration", "Agile Methodologies", "Version Control (Git)", "Debugging"]
     }
   ];
 
@@ -102,7 +128,7 @@ const Skills: React.FC = () => {
           </motion.h2>
 
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -123,7 +149,7 @@ const Skills: React.FC = () => {
                     >
                       {React.cloneElement(category.icon, { className: `${color.iconText}`, size: 28 })}
                     </motion.span>
-                    <h3 className={`text-xl md:text-2xl font-bold bg-gradient-to-r ${color.title.replace('text-', 'from-').replace('dark:text-', 'dark:from-')} bg-clip-text text-transparent`}>
+                    <h3 className={`text-xl md:text-2xl font-bold bg-gradient-to-r ${color.titleGradient} bg-clip-text text-transparent`}>
                       {category.title}
                     </h3>
                   </div>

@@ -107,21 +107,26 @@ const About: React.FC = () => {
             style={{ willChange: 'transform, opacity' }}
           >
             <div className="glass-card rounded-2xl shadow-2xl p-8 md:p-10 card-glow hover-card">
-              <div className="relative z-10">
+            <div className="relative z-10">
                 <p 
                   className="text-base md:text-lg leading-relaxed mb-6 text-slate-700 dark:text-slate-300"
                 >
-                  I'm a <span className="font-semibold text-indigo-600 dark:text-indigo-400">Computer Science and Engineering</span> student at <span className="font-semibold text-purple-600 dark:text-purple-400">Indian Institute of Information Technology Bhagalpur</span> with a passion for software development and problem-solving. 
+                  Hi, I'm <span className="font-semibold text-indigo-600 dark:text-indigo-400">Divyanshu Pal</span>, a <span className="font-semibold text-purple-600 dark:text-purple-400">3rd-year Computer Science and Engineering</span> student at <span className="font-semibold text-purple-600 dark:text-purple-400">IIIT Bhagalpur</span>. I'm passionate about <span className="font-semibold text-pink-600 dark:text-pink-400">full-stack development</span>, <span className="font-semibold text-pink-600 dark:text-pink-400">C++ programming</span>, and <span className="font-semibold text-pink-600 dark:text-pink-400">problem-solving</span>, always striving to create clean, efficient, and impactful software solutions.
                 </p>
                 <p 
                   className="text-base md:text-lg leading-relaxed mb-6 text-slate-700 dark:text-slate-300"
                 >
-                  Currently working as a <span className="font-semibold text-pink-600 dark:text-pink-400">Flutter Developer Intern</span> at Medhwan, I'm developing an EdTech app from scratch, handling both UI development and logic implementation. My experience spans across mobile app development, competitive programming, and social impact initiatives.
+                  I'm a <span className="font-semibold text-cyan-600 dark:text-cyan-400">3-star coder on CodeChef (1602)</span> and hold a <span className="font-semibold text-cyan-600 dark:text-cyan-400">1668 rating on LeetCode</span>, reflecting my strong interest in algorithms and data structures. My dedication to innovation has led me to win two hackathons — as <span className="font-semibold text-yellow-600 dark:text-yellow-400">First Runner-up at IIT ISM Dhanbad</span> and <span className="font-semibold text-yellow-600 dark:text-yellow-400">Winner at BIT Mesra</span>.
+                </p>
+                <p 
+                  className="text-base md:text-lg leading-relaxed mb-6 text-slate-700 dark:text-slate-300"
+                >
+                  Beyond technology, I'm the <span className="font-semibold text-indigo-600 dark:text-indigo-400">Initiator of Unnati Society</span>, an NGO working to promote digital education in government schools, positively impacting <span className="font-bold">hundreds of underprivileged students</span>. I also enjoy hosting and organizing technical and cultural events, which have strengthened my <span className="font-semibold text-purple-600 dark:text-purple-400">leadership and communication skills</span>.
                 </p>
                 <p 
                   className="text-base md:text-lg leading-relaxed text-slate-700 dark:text-slate-300"
                 >
-                  As the founder of <span className="font-semibold text-cyan-600 dark:text-cyan-400">Unnati Welfare Society</span>, I've led efforts to provide digital education to underprivileged students, growing our team to <span className="font-bold">130+ members</span> and impacting over <span className="font-bold">1500 students</span>. I'm passionate about leveraging technology to create meaningful solutions that positively impact communities.
+                  I aspire to merge my technical expertise with my social vision, building <span className="font-semibold text-pink-600 dark:text-pink-400">scalable products</span> that make a real-world difference.
                 </p>
               </div>
             </div>
@@ -195,7 +200,7 @@ const About: React.FC = () => {
                 Interests
               </h3>
               <div className="flex flex-wrap gap-3">
-                {['Mobile Development', 'Competitive Programming', 'Education', 'Problem Solving', 'Social Impact'].map((interest, index) => (
+                {['Full-Stack Development', 'C++ Programming', 'Competitive Programming', 'Problem Solving', 'Social Impact', 'Event Organization'].map((interest, index) => (
                   <motion.span
                     key={interest}
                     className="px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-700 hover-tag"
