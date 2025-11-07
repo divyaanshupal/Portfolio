@@ -81,79 +81,135 @@ const About: React.FC = () => {
     <section 
       id="about" 
       ref={sectionRef}
-      className="py-24 opacity-0 transition-opacity duration-1000"
+      className="py-20 md:py-32 relative overflow-hidden"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-50/50 to-transparent dark:via-indigo-950/30"></div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-5xl mx-auto">
           <motion.h2 
-            className="text-3xl font-bold text-center mb-12 relative"
-            initial={{ opacity: 0, y: 20 }}
+            className="section-title mb-16 md:mb-20"
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <span className="relative z-10">About Me</span>
-            <motion.span 
-              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 bg-indigo-500 rounded"
-              initial={{ width: 0 }}
-              whileInView={{ width: "4rem" }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-            />
+            About Me
           </motion.h2>
           {/* Main About Card */}
-          <PixelCard variant="pink" className={`mb-8 bg-white dark:bg-slate-800 rounded-xl shadow-lg p-8`}>
-            <div className="relative z-10">
-              <motion.p 
-                className="text-lg leading-relaxed mb-6 text-pink-700 dark:text-pink-200"
-                variants={itemVariants}
-              >
-                I'm a Computer Science and Engineering student at Indian Institute of Information Technology Bhagalpur with a passion for software development and problem-solving. 
-              </motion.p>
-              <motion.p 
-                className="text-lg leading-relaxed mb-6 text-pink-700 dark:text-pink-200"
-                variants={itemVariants}
-              >
-                Currently working as a Flutter Developer Intern at Medhwan, I'm developing an EdTech app from scratch, handling both UI development and logic implementation. My experience spans across mobile app development, competitive programming, and social impact initiatives.
-              </motion.p>
-              <motion.p 
-                className="text-lg leading-relaxed text-pink-700 dark:text-pink-200"
-                variants={itemVariants}
-              >
-                As the founder of Unnati Welfare Society, I've led efforts to provide digital education to underprivileged students, growing our team to 130+ members and impacting over 1500 students. I'm passionate about leveraging technology to create meaningful solutions that positively impact communities.
-              </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+            className="mb-12"
+            style={{ willChange: 'transform, opacity' }}
+          >
+            <div className="glass-card rounded-2xl shadow-2xl p-8 md:p-10 card-glow hover-card">
+              <div className="relative z-10">
+                <p 
+                  className="text-base md:text-lg leading-relaxed mb-6 text-slate-700 dark:text-slate-300"
+                >
+                  I'm a <span className="font-semibold text-indigo-600 dark:text-indigo-400">Computer Science and Engineering</span> student at <span className="font-semibold text-purple-600 dark:text-purple-400">Indian Institute of Information Technology Bhagalpur</span> with a passion for software development and problem-solving. 
+                </p>
+                <p 
+                  className="text-base md:text-lg leading-relaxed mb-6 text-slate-700 dark:text-slate-300"
+                >
+                  Currently working as a <span className="font-semibold text-pink-600 dark:text-pink-400">Flutter Developer Intern</span> at Medhwan, I'm developing an EdTech app from scratch, handling both UI development and logic implementation. My experience spans across mobile app development, competitive programming, and social impact initiatives.
+                </p>
+                <p 
+                  className="text-base md:text-lg leading-relaxed text-slate-700 dark:text-slate-300"
+                >
+                  As the founder of <span className="font-semibold text-cyan-600 dark:text-cyan-400">Unnati Welfare Society</span>, I've led efforts to provide digital education to underprivileged students, growing our team to <span className="font-bold">130+ members</span> and impacting over <span className="font-bold">1500 students</span>. I'm passionate about leveraging technology to create meaningful solutions that positively impact communities.
+                </p>
+              </div>
             </div>
-          </PixelCard>
+          </motion.div>
           
           {/* Contact & Interests Cards */}
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
           >
-            <PixelCard variant="pink" className={`rounded-xl shadow-lg p-6 ${ABOUT_COLORS[1].card}`}>
-              <h3 className={`text-xl font-extrabold mb-4 ${ABOUT_COLORS[1].title}`}>Contact Info</h3>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-2"><Mail size={18} className="text-pink-400" /><span className="font-medium">Email:</span> divyanshuwork03@gmail.com</li>
-                <li className="flex items-center gap-2"><Phone size={18} className="text-pink-400" /><span className="font-medium">Phone:</span> +91 6387811379</li>
-                <li className="flex items-center gap-2"><Github size={18} className="text-pink-400" /><span className="font-medium">GitHub:</span> @divyaanshupal</li>
+            <motion.div
+              variants={itemVariants}
+              className="glass-card rounded-2xl shadow-xl p-6 md:p-8 card-glow hover-card"
+            >
+              <h3 className="text-xl md:text-2xl font-bold mb-6 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                Contact Info
+              </h3>
+              <ul className="space-y-4">
+                <motion.li 
+                  className="flex items-center gap-3 hover-list-item p-2 rounded-lg"
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30">
+                    <Mail size={20} className="text-indigo-600 dark:text-indigo-400" />
+                  </div>
+                  <div>
+                    <span className="text-sm text-slate-500 dark:text-slate-400 block">Email</span>
+                    <a href="mailto:divyanshuwork03@gmail.com" className="text-base font-medium text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                      divyanshuwork03@gmail.com
+                    </a>
+                  </div>
+                </motion.li>
+                <motion.li 
+                  className="flex items-center gap-3 hover-list-item p-2 rounded-lg"
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30">
+                    <Phone size={20} className="text-purple-600 dark:text-purple-400" />
+                  </div>
+                  <div>
+                    <span className="text-sm text-slate-500 dark:text-slate-400 block">Phone</span>
+                    <a href="tel:+916387811379" className="text-base font-medium text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+                      +91 6387811379
+                    </a>
+                  </div>
+                </motion.li>
+                <motion.li 
+                  className="flex items-center gap-3 hover-list-item p-2 rounded-lg"
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="p-2 rounded-lg bg-pink-100 dark:bg-pink-900/30">
+                    <Github size={20} className="text-pink-600 dark:text-pink-400" />
+                  </div>
+                  <div>
+                    <span className="text-sm text-slate-500 dark:text-slate-400 block">GitHub</span>
+                    <a href="https://github.com/divyaanshupal" target="_blank" rel="noopener noreferrer" className="text-base font-medium text-slate-700 dark:text-slate-300 hover:text-pink-600 dark:hover:text-pink-400 transition-colors">
+                      @divyaanshupal
+                    </a>
+                  </div>
+                </motion.li>
               </ul>
-            </PixelCard>
-            <PixelCard variant="pink" className={`rounded-xl shadow-lg p-6 ${ABOUT_COLORS[2].card}`}>
-              <h3 className={`text-xl font-extrabold mb-4 ${ABOUT_COLORS[2].title}`}>Interests</h3>
-              <div className="flex flex-wrap gap-2">
+            </motion.div>
+            <motion.div
+              variants={itemVariants}
+              className="glass-card rounded-2xl shadow-xl p-6 md:p-8 card-glow hover-card"
+            >
+              <h3 className="text-xl md:text-2xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                Interests
+              </h3>
+              <div className="flex flex-wrap gap-3">
                 {['Mobile Development', 'Competitive Programming', 'Education', 'Problem Solving', 'Social Impact'].map((interest, index) => (
-                  <span
+                  <motion.span
                     key={interest}
-                    className={`px-3 py-1 rounded-full text-sm font-semibold ${ABOUT_COLORS[2].badgeBg} ${ABOUT_COLORS[2].badgeText} ${ABOUT_COLORS[2].badgeBorder} border`}
+                    className="px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-700 hover-tag"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                    whileHover={{ scale: 1.1, y: -2 }}
                   >
                     {interest}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
-            </PixelCard>
+            </motion.div>
           </motion.div>
         </div>
       </div>

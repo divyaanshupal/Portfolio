@@ -58,24 +58,20 @@ const Education: React.FC = () => {
   ];
 
   return (
-    <section id="education" className="py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto">
+    <section id="education" className="py-20 md:py-32 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-50/50 to-transparent dark:via-cyan-950/30"></div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-4xl mx-auto">
           <motion.h2 
-            className="text-3xl font-bold text-center mb-12 relative"
-            initial={{ opacity: 0, y: 20 }}
+            className="section-title mb-16 md:mb-20"
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <span className="relative z-10">Education</span>
-            <motion.span 
-              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 bg-indigo-500 rounded"
-              initial={{ width: 0 }}
-              whileInView={{ width: "4rem" }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-            />
+            Education
           </motion.h2>
 
           <motion.div 
@@ -88,10 +84,10 @@ const Education: React.FC = () => {
             {educationData.map((edu, index) => {
               const color = EDU_COLORS[index % EDU_COLORS.length];
               return (
-                <PixelCard
+                <motion.div
                   key={index}
-                  variant="pink"
-                  className={`rounded-xl shadow-lg p-6 ${color.card}`}
+                  variants={itemVariants}
+                  className="glass-card rounded-2xl shadow-xl p-6 md:p-8 card-glow hover-card mb-6"
                 >
                   <motion.h3 
                     className={`text-xl font-extrabold mb-2 ${color.degree}`}
@@ -129,7 +125,7 @@ const Education: React.FC = () => {
                   >
                     {edu.details}
                   </motion.p>
-                </PixelCard>
+                </motion.div>
               );
             })}
           </motion.div>

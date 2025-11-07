@@ -85,108 +85,110 @@ const Skills: React.FC = () => {
   ];
 
   return (
-    <section id="skills" className="py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
+    <section id="skills" className="py-20 md:py-32 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-50/50 to-transparent dark:via-purple-950/30"></div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-6xl mx-auto">
           <motion.h2 
-            className="text-3xl font-bold text-center mb-12 relative"
-            initial={{ opacity: 0, y: 20 }}
+            className="section-title mb-16 md:mb-20"
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <span className="relative z-10">Skills</span>
-            <motion.span 
-              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 bg-indigo-500 rounded"
-              initial={{ width: 0 }}
-              whileInView={{ width: "4rem" }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-            />
+            Skills
           </motion.h2>
 
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
           >
             {skillCategories.map((category, index) => {
               const color = SKILL_COLORS[index % SKILL_COLORS.length];
               return (
-                <PixelCard
+                <motion.div
                   key={index}
-                  variant="pink"
-                  className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 transition-all hover:shadow-xl hover:-translate-y-1"
+                  variants={itemVariants}
+                  className="glass-card rounded-2xl shadow-xl p-6 md:p-8 card-glow hover-card"
                 >
-                  <div className={`flex items-center gap-3 mb-4`}>
-                    <span className={`inline-flex items-center justify-center w-10 h-10 rounded-full ${color.iconBg}`}>
-                      {React.cloneElement(category.icon, { className: `${color.iconText}` })}
-                    </span>
-                    <h3 className={`text-xl font-extrabold ${color.title}`}>
+                  <div className={`flex items-center gap-4 mb-6`}>
+                    <motion.span 
+                      className={`inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl ${color.iconBg} shadow-lg`}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                    >
+                      {React.cloneElement(category.icon, { className: `${color.iconText}`, size: 28 })}
+                    </motion.span>
+                    <h3 className={`text-xl md:text-2xl font-bold bg-gradient-to-r ${color.title.replace('text-', 'from-').replace('dark:text-', 'dark:from-')} bg-clip-text text-transparent`}>
                       {category.title}
                     </h3>
                   </div>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-3">
                     {category.skills.map((skill, skillIndex) => (
-                      <span
+                      <motion.span
                         key={skill}
-                        className={`px-3 py-1 rounded-full text-sm font-semibold ${color.badgeBg} ${color.badgeText} ${color.badgeBorder} border`}
+                        className={`px-4 py-2 rounded-full text-sm font-semibold ${color.badgeBg} ${color.badgeText} ${color.badgeBorder} border hover-tag`}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
+                        whileHover={{ scale: 1.1, y: -2 }}
                       >
                         {skill}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
-                </PixelCard>
+                </motion.div>
               );
             })}
           </motion.div>
           
-          <div className="mt-16 bg-gradient-to-r from-indigo-500 to-blue-600 rounded-xl shadow-lg p-8 text-white">
-            <h3 className="text-xl font-semibold mb-6 text-center">Proficiency Highlights</h3>
-            <div className="space-y-6">
-              <div>
-                <div className="flex justify-between mb-2">
-                  <span>Flutter Development</span>
-                  <span>90%</span>
-                </div>
-                <div className="w-full bg-white/20 rounded-full h-2.5">
-                  <div className="bg-white h-2.5 rounded-full" style={{ width: '90%' }}></div>
-                </div>
-              </div>
-              
-              <div>
-                <div className="flex justify-between mb-2">
-                  <span>Data Structures & Algorithms</span>
-                  <span>85%</span>
-                </div>
-                <div className="w-full bg-white/20 rounded-full h-2.5">
-                  <div className="bg-white h-2.5 rounded-full" style={{ width: '85%' }}></div>
-                </div>
-              </div>
-              
-              <div>
-                <div className="flex justify-between mb-2">
-                  <span>Problem Solving</span>
-                  <span>88%</span>
-                </div>
-                <div className="w-full bg-white/20 rounded-full h-2.5">
-                  <div className="bg-white h-2.5 rounded-full" style={{ width: '88%' }}></div>
-                </div>
-              </div>
-              
-              <div>
-                <div className="flex justify-between mb-2">
-                  <span>UI/UX Design</span>
-                  <span>75%</span>
-                </div>
-                <div className="w-full bg-white/20 rounded-full h-2.5">
-                  <div className="bg-white h-2.5 rounded-full" style={{ width: '75%' }}></div>
-                </div>
+          <motion.div 
+            className="mt-12 md:mt-16 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-2xl shadow-2xl p-8 md:p-10 text-white relative overflow-hidden"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:20px_20px] opacity-30"></div>
+            <div className="relative z-10">
+              <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center">Proficiency Highlights</h3>
+              <div className="space-y-6">
+                {[
+                  { skill: 'Flutter Development', percentage: 90 },
+                  { skill: 'Data Structures & Algorithms', percentage: 85 },
+                  { skill: 'Problem Solving', percentage: 88 },
+                  { skill: 'UI/UX Design', percentage: 75 }
+                ].map((item, index) => (
+                  <motion.div
+                    key={item.skill}
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                  >
+                    <div className="flex justify-between mb-3">
+                      <span className="font-semibold text-lg">{item.skill}</span>
+                      <span className="font-bold text-xl">{item.percentage}%</span>
+                    </div>
+                    <div className="w-full bg-white/20 rounded-full h-3 overflow-hidden shadow-inner">
+                      <motion.div 
+                        className="bg-gradient-to-r from-white to-white/90 h-3 rounded-full shadow-lg"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${item.percentage}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, delay: index * 0.1 + 0.3, ease: "easeOut" }}
+                      />
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

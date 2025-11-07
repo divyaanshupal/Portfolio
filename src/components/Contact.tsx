@@ -71,19 +71,30 @@ const Contact: React.FC = () => {
     <section 
       id="contact" 
       ref={sectionRef}
-      className="py-24 bg-slate-100 dark:bg-slate-800/50 opacity-0 transition-opacity duration-1000"
+      className="py-20 md:py-32 relative overflow-hidden bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 relative animate-fade-in-up">
-            <span className="relative z-10">Get In Touch</span>
-            <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-indigo-500 rounded animate-width-expand"></span>
-          </h2>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2 
+            className="section-title mb-16 md:mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            Get In Touch
+          </motion.h2>
           
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 md:gap-8">
             {/* Contact Info */}
-            <div className="lg:col-span-2 space-y-6">
-              <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 hover-card">
+            <motion.div 
+              className="lg:col-span-2 space-y-6"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="glass-card rounded-2xl shadow-xl p-6 md:p-8 card-glow hover-card">
                 <h3 className="text-xl font-semibold mb-6 text-indigo-600 dark:text-indigo-400">
                   Contact Information
                 </h3>
@@ -147,7 +158,12 @@ const Contact: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-gradient-to-r from-indigo-600 to-blue-700 rounded-xl shadow-lg p-6 text-white hover-card">
+              <motion.div 
+                className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-2xl shadow-xl p-6 md:p-8 text-white hover-card relative overflow-hidden"
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:20px_20px] opacity-30"></div>
+                <div className="relative z-10">
                 <h3 className="text-xl font-semibold mb-4">Open to Opportunities</h3>
                 <p className="mb-4">I'm currently looking for internship and collaboration opportunities in software development, particularly in Flutter, React, and full-stack development.</p>
                 <p className="mb-4">Check out my recent projects:</p>
@@ -178,12 +194,19 @@ const Contact: React.FC = () => {
                     • Hangman Flutter App
                   </a>
                 </div>
-              </div>
-            </div>
+                </div>
+              </motion.div>
+            </motion.div>
             
             {/* Contact Form */}
-            <div className="lg:col-span-3">
-              <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-8 hover-card">
+            <motion.div 
+              className="lg:col-span-3"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="glass-card rounded-2xl shadow-xl p-6 md:p-8 card-glow hover-card">
                 <h3 className="text-xl font-semibold mb-6 text-indigo-600 dark:text-indigo-400">
                   Send Me a Message
                 </h3>
@@ -257,7 +280,7 @@ const Contact: React.FC = () => {
                   </form>
                 )}
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Github, ExternalLink } from 'lucide-react';
+import { motion } from 'framer-motion';
 import PixelCard from './PixelCard';
 
 const PROJECT_COLORS = [
   {
     iconBg: 'bg-blue-100 dark:bg-blue-900',
     iconText: 'text-blue-500 dark:text-blue-300',
-    title: 'text-blue-600 dark:text-blue-300',
+    titleGradient: 'from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400',
     badgeBg: 'bg-blue-50 dark:bg-blue-800',
     badgeText: 'text-blue-700 dark:text-blue-200',
     badgeBorder: 'border-blue-100 dark:border-blue-700',
@@ -15,7 +16,7 @@ const PROJECT_COLORS = [
   {
     iconBg: 'bg-pink-100 dark:bg-pink-900',
     iconText: 'text-pink-500 dark:text-pink-300',
-    title: 'text-pink-600 dark:text-pink-300',
+    titleGradient: 'from-pink-600 to-rose-600 dark:from-pink-400 dark:to-rose-400',
     badgeBg: 'bg-pink-50 dark:bg-pink-800',
     badgeText: 'text-pink-700 dark:text-pink-200',
     badgeBorder: 'border-pink-100 dark:border-pink-700',
@@ -24,7 +25,7 @@ const PROJECT_COLORS = [
   {
     iconBg: 'bg-yellow-100 dark:bg-yellow-900',
     iconText: 'text-yellow-500 dark:text-yellow-300',
-    title: 'text-yellow-600 dark:text-yellow-300',
+    titleGradient: 'from-yellow-600 to-orange-600 dark:from-yellow-400 dark:to-orange-400',
     badgeBg: 'bg-yellow-50 dark:bg-yellow-800',
     badgeText: 'text-yellow-700 dark:text-yellow-200',
     badgeBorder: 'border-yellow-100 dark:border-yellow-700',
@@ -119,88 +120,138 @@ const Projects: React.FC = () => {
     <section 
       id="projects" 
       ref={sectionRef}
-      className="py-24 opacity-0 transition-opacity duration-1000"
+      className="py-20 md:py-32 relative overflow-hidden"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 relative">
-            <span className="relative z-10">Projects</span>
-            <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-indigo-500 rounded"></span>
-          </h2>
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-pink-50/50 to-transparent dark:via-pink-950/30"></div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2 
+            className="section-title mb-16 md:mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            Projects
+          </motion.h2>
           
-          <div className="space-y-12">
+          <div className="space-y-8 md:space-y-12">
             {projects.map((project, index) => {
               const color = PROJECT_COLORS[index % PROJECT_COLORS.length];
               return (
-                <PixelCard
+                <motion.div
                   key={index}
-                  variant="pink"
-                  className={`bg-white dark:bg-slate-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 ${
-                    activeProject === index ? 'shadow-2xl' : 'hover:shadow-xl'
-                  }`}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
-                  {/* Project Header */}
                   <div
-                    className={`p-6 cursor-pointer relative z-10 ${
-                      activeProject === index ? 'bg-opacity-80' : ''
+                    className={`glass-card rounded-2xl shadow-xl overflow-hidden transition-all duration-500 card-glow ${
+                      activeProject === index ? 'shadow-2xl scale-[1.02]' : 'hover:shadow-2xl hover:-translate-y-2'
                     }`}
-                    onClick={() => toggleProject(index)}
                   >
-                    <div className="flex items-start justify-between">
-                      <div className="flex items-center gap-3">
-                        <span className={`inline-flex items-center justify-center w-12 h-12 rounded-full ${color.iconBg}`}>
-                          <Github size={24} className={color.iconText} />
-                        </span>
-                        <h3 className={`text-xl font-extrabold ${color.title} mb-2`}>
-                          {project.title}
-                        </h3>
-                      </div>
-                      <a 
-                        href={project.githubLink} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-slate-400 hover:text-indigo-600 dark:text-slate-500 dark:hover:text-indigo-300 transition-colors"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <ExternalLink size={22} />
-                      </a>
-                    </div>
-                    <p className="text-base font-medium text-slate-700 dark:text-slate-200 mb-4">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.stack.map((tech, techIndex) => (
-                        <span 
-                          key={techIndex}
-                          className={`px-3 py-1 rounded-full text-sm font-semibold ${color.badgeBg} ${color.badgeText} ${color.badgeBorder} border`}
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  {/* Project Details */}
-                  {activeProject === index && (
-                    <div className="p-6 pt-0 bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700 relative z-10">
-                      <ul className="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-200 mb-4">
-                        {project.details.map((detail, detailIndex) => (
-                          <li key={detailIndex}>{detail}</li>
-                        ))}
-                      </ul>
-                      <div className="flex justify-center">
-                        <a 
+                    {/* Project Header */}
+                    <motion.div
+                      className={`p-6 md:p-8 cursor-pointer relative z-10 ${
+                        activeProject === index ? 'bg-gradient-to-r from-indigo-50/50 to-purple-50/50 dark:from-indigo-900/20 dark:to-purple-900/20' : ''
+                      }`}
+                      onClick={() => toggleProject(index)}
+                      whileHover={{ scale: activeProject === index ? 1 : 1.01 }}
+                    >
+                      <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
+                        <div className="flex items-center gap-4 flex-1">
+                          <motion.span 
+                            className={`inline-flex items-center justify-center w-14 h-14 rounded-xl ${color.iconBg} shadow-lg`}
+                            whileHover={{ rotate: 360 }}
+                            transition={{ duration: 0.6 }}
+                          >
+                            <Github size={28} className={color.iconText} />
+                          </motion.span>
+                          <div className="flex-1">
+                            <h3 className={`text-xl md:text-2xl font-bold mb-2 bg-gradient-to-r ${color.titleGradient} bg-clip-text text-transparent`}>
+                              {project.title}
+                            </h3>
+                            <p className="text-base md:text-lg text-slate-600 dark:text-slate-400">
+                              {project.description}
+                            </p>
+                          </div>
+                        </div>
+                        <motion.a 
                           href={project.githubLink} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className={`inline-flex items-center font-bold text-lg transition-colors ${color.link}`}
+                          className="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all hover:bg-indigo-100 dark:hover:bg-indigo-900/30"
+                          onClick={(e) => e.stopPropagation()}
+                          whileHover={{ scale: 1.1, rotate: 15 }}
+                          whileTap={{ scale: 0.9 }}
                         >
-                          View Project <ExternalLink size={18} className="ml-1" />
-                        </a>
+                          <ExternalLink size={24} />
+                        </motion.a>
                       </div>
-                    </div>
-                  )}
-                </PixelCard>
+                      <div className="flex flex-wrap gap-3 mt-6">
+                        {project.stack.map((tech, techIndex) => (
+                          <motion.span 
+                            key={techIndex}
+                            className={`px-4 py-2 rounded-full text-sm font-semibold ${color.badgeBg} ${color.badgeText} ${color.badgeBorder} border hover-tag`}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.3, delay: techIndex * 0.05 }}
+                            whileHover={{ scale: 1.1, y: -2 }}
+                          >
+                            {tech}
+                          </motion.span>
+                        ))}
+                      </div>
+                    </motion.div>
+                    
+                    {/* Project Details */}
+                    <motion.div
+                      initial={false}
+                      animate={{ 
+                        height: activeProject === index ? 'auto' : 0,
+                        opacity: activeProject === index ? 1 : 0
+                      }}
+                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="p-6 md:p-8 pt-0 border-t border-slate-200 dark:border-slate-700 relative z-10">
+                        <ul className="space-y-3 text-slate-700 dark:text-slate-300 mb-6">
+                          {project.details.map((detail, detailIndex) => (
+                            <motion.li 
+                              key={detailIndex}
+                              className="flex items-start gap-3"
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: activeProject === index ? 1 : 0, x: activeProject === index ? 0 : -20 }}
+                              transition={{ duration: 0.3, delay: detailIndex * 0.1 }}
+                            >
+                              <span className="text-indigo-600 dark:text-indigo-400 mt-1.5">▸</span>
+                              <span className="text-base md:text-lg leading-relaxed">{detail}</span>
+                            </motion.li>
+                          ))}
+                        </ul>
+                        <motion.div 
+                          className="flex justify-center"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: activeProject === index ? 1 : 0, y: activeProject === index ? 0 : 20 }}
+                          transition={{ duration: 0.3, delay: 0.3 }}
+                        >
+                          <a 
+                            href={project.githubLink} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-lg transition-all bg-gradient-to-r ${color.link} hover:shadow-lg`}
+                          >
+                            View Project <ExternalLink size={20} />
+                          </a>
+                        </motion.div>
+                      </div>
+                    </motion.div>
+                  </div>
+                </motion.div>
               );
             })}
           </div>

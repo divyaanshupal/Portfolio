@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Trophy, Code } from 'lucide-react';
+import { motion } from 'framer-motion';
 import PixelCard from './PixelCard';
 
 interface Achievement {
@@ -56,18 +57,30 @@ const Achievements: React.FC = () => {
     <section 
       id="achievements" 
       ref={sectionRef}
-      className="py-24 bg-slate-100 dark:bg-slate-800/50 opacity-0 transition-opacity duration-1000"
+      className="py-20 md:py-32 relative overflow-hidden bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 relative">
-            <span className="relative z-10">Achievements</span>
-            <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-indigo-500 rounded"></span>
-          </h2>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2 
+            className="section-title mb-16 md:mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            Achievements
+          </motion.h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {achievements.map((achievement, index) => (
-              <PixelCard key={index} variant="pink" className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 transition-all hover:shadow-xl hover:-translate-y-1">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="glass-card rounded-2xl shadow-xl p-6 md:p-8 card-glow hover-card"
+              >
                 <div className="flex items-start relative z-10">
                   <div className={
                     `flex items-center justify-center w-12 h-12 rounded-full mr-4 flex-shrink-0 ` +
@@ -90,11 +103,19 @@ const Achievements: React.FC = () => {
                     </p>
                   </div>
                 </div>
-              </PixelCard>
+              </motion.div>
             ))}
           </div>
           
-          <div className="mt-12 p-8 bg-gradient-to-r from-indigo-600 to-blue-700 rounded-xl shadow-xl text-white text-center">
+          <motion.div 
+            className="mt-12 md:mt-16 p-8 md:p-10 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-2xl shadow-2xl text-white text-center relative overflow-hidden"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:20px_20px] opacity-30"></div>
+            <div className="relative z-10">
             <h3 className="text-2xl font-bold mb-4">Want to collaborate?</h3>
             <p className="text-lg mb-6">I'm always open to new challenges and opportunities to learn and grow.</p>
             <a 
@@ -103,7 +124,8 @@ const Achievements: React.FC = () => {
             >
               Get in touch
             </a>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
