@@ -14,6 +14,11 @@ const Achievements: React.FC = () => {
   
   const achievements: Achievement[] = [
     {
+      title: 'HackQuest\'25 – BIT Mesra',
+      description: 'Secured 1st place in a 24-hour offline hackathon among 70+ teams. Developed a unified platform integrating GitHub, MS Teams, Slack, Notion, and Google Workspace tools.',
+      icon: 'trophy'
+    },
+    {
       title: 'Hackfest\'25 - IIT ISM Dhanbad',
       description: 'Led team that secured 2nd place in our Problem Statement; built a system to monitor audience sentiment via social media and feedback, relayed to admin dashboard.',
       icon: 'trophy'
